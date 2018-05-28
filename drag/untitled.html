@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<style type="text/css">
+	.box {
+		width: 400px;
+		height: 400px;
+		border: 2px solid #CCC;
+		margin: 10px;
+	}
+	#box1, #box2 {
+		float: left;
+	}
+	img {
+		clear: both;
+	}
+</style>
+<body>
+<img src="/Users/lizeshi/Documents/desktop/504230_screenshots_20180320000857_1.jpg" id="pic" draggable="true" ondragstart="drag(this,event)" >
+<div id="box1" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="box2" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<script type="text/javascript">
+	function allowDrop(ev)
+	{
+	ev.preventDefault();
+	}
+
+	function drag(target,ev)
+	{
+	ev.dataTransfer.setData("Text",target.id);
+	}
+
+	
+
+	function drop(ev) {
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("Text");
+		alert(data);
+		var newElem = document.getElementById(data);
+		ev.target.appendChild(newElem);
+	}
+</script>
+</body>
+</html>

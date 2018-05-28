@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<canvas width="400px" height="300px" id="myCanvas" ></canvas>
+	<br>
+	<!-- <button onclick="draw()">绘图</button> -->
+<script type="text/javascript">
+	var canvas = document.getElementById('myCanvas');
+	var context = canvas.getContext("2d");
+	context.translate(200,150);
+	context.lineWidth = 8;
+	function drawBackground() {
+		//绘制表盘
+		context.beginPath();
+		context.arc(0,0,100,0,Math.PI*2,true);
+		context.stroke();
+		context.save();
+		var hourNumbers = [3,4,5,6,7,8,9,10,11,12,1,2];
+		context.font = "18px Arial";
+		context.textAlign = "center";
+		context.textBaseline = "middle";
+		hourNumbers.forEach(function(number, i) {
+			var rad = 2 * Math.PI / 12 * i;
+			var x = Math.cos(rad) * 70;
+			var y = Math.sin(rad) * 70;
+			context.fillText(number,x,y);
+		});
+		for (var i = 0; i < 60; i++) {
+			context.beginPath();
+			if (i % 5 == 0) {
+				context.fillRect(0,87,3,13);
+			}
+			else {
+				context.fillRect(0,90,2,10);
+			}
+			context.rotate(Math.PI/30);
+		}
+	}
+
+	function drawHour(hour, minute) {
+		context.beginPath();
+		var rad = 2*Math.PI / 12 * hour + 2*Math.PI / 720 * minute;
+		context.lineWidth = 6;
+		context.lineCap = "round";
+		context.moveTo(0, 0);
+		context.lineTo(Math.sin(rad)*40, -Math.cos(rad)*40);
+		context.stroke();
+
+	}
+
+	function drawMinute(minute, second) {
+		context.beginPath();
+		var rad = 2*Math.PI / 60 * minute + 2*Math.PI / 720 * second;
+		context.lineWidth = 5;
+		context.lineCap = "round";
+		context.moveTo(0, 0);
+		context.lineTo(Math.sin(rad)*50, -Math.cos(rad)*50);
+		context.stroke();
+
+	}
+
+	function drawSecond(second) {
+		context.beginPath();
+		var rad = 2*Math.PI / 60 * second;
+		context.lineWidth = 4;
+		context.lineCap = "round";
+		context.save();
+		context.strokeStyle = "red";
+		context.moveTo(0, 0);
+		context.lineTo(Math.sin(rad)*60, -Math.cos(rad)*60);
+		context.stroke();
+		context.restore();
+
+	}
+
+	function drawDot() {
+		context.save();
+		context.beginPath();
+		context.arc(0,0,4,0,Math.PI*2,true);
+		context.fillStyle = "#FFF";
+		context.fill();
+		context.restore();
+	}
+
+	function draw() {
+		context.clearRect(-200,-150,300,400);
+		var now = new Date();
+		var hour = now.getHours();
+		var minute = now.getMinutes();
+		var second = now.getSeconds();
+		drawBackground();
+		drawHour(hour,minute);
+		drawMinute(minute,second);
+		drawSecond(second);
+		context.restore();
+	}
+	setInterval(draw, 1000);
+
+</script>	
+</body>
+</html>

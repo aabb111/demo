@@ -1,0 +1,674 @@
+html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+
+}
+
+body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            /* Turn off tap highlight in Mobile Safari */
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+   /* Background from CSS3 Patterns Gallery by Anna Kassner */
+
+   background:
+   linear-gradient(135deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px),
+   linear-gradient(225deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px)0 64px;
+   background-color:#708090;
+   background-size: 64px 128px
+}
+
+#RabbitRun-arena {
+   margin: 0 auto;
+   width: 800px;
+   height: 520px;
+}
+
+#RabbitRun-game-canvas {
+   border: 1px solid blue;
+
+   -webkit-transition: opacity 3s;
+   -moz-transition: opacity 3s;
+   -o-transition: opacity 3s;
+   transition: opacity 3s;
+
+   width: 100%;
+
+   opacity: 0;
+   display: none;
+}
+
+#RabbitRun-score {
+   font: 46px fantasy;
+   text-align: center;
+   color: yellow;
+   text-shadow: 2px 2px 4px rgba(0,0,80,1.0);
+
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+
+   opacity: 0;
+   display: none;
+}
+
+#RabbitRun-fps {
+   position: absolute;
+   margin-left: 740px;
+   margin-top: -2em;
+   color: yellow;
+   text-shadow: 1px 1px 1px rgb(0,0,80);
+   font: bold 20px fantasy;
+
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+
+   opacity: 0;
+   display: none;
+   z-index: 1;
+}
+
+#RabbitRun-toast {
+   position: absolute;
+   margin-left: 100px;
+   margin-top: 20px;
+   width: 600px;
+   font: 40px fantasy;
+   text-align: center;
+   color: #ff6;
+   text-shadow: 2px 2px 4px rgb(0,0,0);
+
+   -webkit-transition: opacity 0.5s;
+   -moz-transition: opacity 0.5s;
+   -o-transition: opacity 0.5s;
+   transition: opacity 0.5s;
+
+   opacity: 0;
+   display: none;
+   z-index: 1;
+}
+
+#RabbitRun-instructions {
+   margin-left: 155px;
+   padding-left: 5px;
+   padding-top: 10px;
+   height: 2em;
+
+   color: yellow;
+   font-size: 0.95em;
+
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+
+   display: none;
+   opacity: 0;
+}
+
+.RabbitRun-keys {
+   color: orange;
+   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+   background: rgba(0,0,0,0.1);
+   border: thin solid rgba(0,0,0,0.20);
+   border-radius: 5px;
+   margin-left: 10px;
+   padding-right: 5px;
+   padding-left: 5px;
+   padding-bottom: 5px;
+
+   display: inline;
+}
+
+.RabbitRun-explanation {
+   color: yellow;
+   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+   display: inline;
+   margin-top: 5px;
+   padding-right: 5px;
+   padding-left: 5px;
+   padding-bottom: 2px;
+}
+
+#RabbitRun-copyright {
+   float: right;
+   margin-right: 2px;
+   margin-top: -2.3em;
+   padding: 2px;
+   color: blue;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+   font-size: 0.85em;
+
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+
+   display: none;
+   opacity: 0;
+}
+
+#RabbitRun-sound-and-music {
+   position: absolute;
+   margin-left: 5px;
+   margin-top: 9px;
+   padding: 5px;
+   padding-top: 2px;
+   padding-bottom: 2px;
+   color: yellow;
+   font-size: 0.9em;
+   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+   background: rgba(0,0,0,0.1);
+   border-radius: 5px;
+   border: thin solid rgba(0,0,0,0.20);
+
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+
+   display: none;
+   opacity: 0;
+}
+
+.RabbitRun-checkbox-div {
+   display: inline;
+   text-shadow: 1px 1px 1px blue;
+}
+
+#RabbitRun-sound-checkbox-div {
+   margin-right: 10px;
+}
+
+#RabbitRun-loading {
+   position: absolute;
+   margin-top: 80px;
+   width: 790px;
+   font: 55px fantasy;
+   text-align: center;
+
+   -webkit-transition: opacity 2.0s;
+   -moz-transition: opacity 2.0s;
+   -o-transition: opacity 2.0s;
+   transition: opacity 2.0s;
+}
+
+#RabbitRun-loading-title {
+   padding-left: 40px;
+   padding-bottom: 30px;
+   color: #ff6;
+   text-shadow: 2px 2px 4px rgb(0,0,0);
+
+   -webkit-transition: opacity 2.0s;
+   -moz-transition: opacity 2.0s;
+   -o-transition: opacity 2.0s;
+   transition: opacity  2.0s;
+
+   opacity: 0;
+   display: none;
+}
+
+#RabbitRun-loading-animated-gif {
+   margin: 0 auto;
+   border: thin solid rgba(0, 0, 255, 0.7);
+   border-radius: 60px 60px 60px;
+   padding: 40px;
+   margin-top: 10px;
+
+   /* Radial gradient generated at http://www.colorzilla.com/gradient-editor */
+
+   background: -moz-radial-gradient(center, ellipse cover, #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%);
+   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#f2f6f8), color-stop(50%,#d8e1e7), color-stop(51%,#b5c6d0), color-stop(100%,#e0eff9));
+   background: -webkit-radial-gradient(center, ellipse cover, #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%);
+   background: -o-radial-gradient(center, ellipse cover, #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%);
+   background: -ms-radial-gradient(center, ellipse cover, #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%);
+   background: radial-gradient(ellipse at center, #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9',GradientType=1 );
+
+   -webkit-transition: opacity 2.0s;
+   -moz-transition: opacity 2.0s;
+   -o-transition: opacity 2.0s;
+   transition: opacity  2.0s;
+
+   opacity: 0;
+   display: none;
+}
+
+#RabbitRun-lives {
+   position: absolute;
+   margin-top: 20px;
+   margin-left: 5px;
+
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+
+   display: none;
+   opacity: 0;
+}
+
+#RabbitRun-life-icon-left {
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+}
+
+#RabbitRun-life-icon-middle {
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+}
+
+#RabbitRun-life-icon-right {
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+}
+
+.RabbitRun-title {
+   font: 24px fantasy;
+   color: blue;
+}
+
+.RabbitRun-credits {
+   position: absolute;
+   margin-left: 32px;
+   margin-top: 10px;
+   padding-bottom: 30px;
+   font: 20px fantasy;
+   text-align: center;
+   width: 650px;
+   height: 23em;
+   background: rgba(255,255,230,0.75);
+   border: thin solid blue;
+   padding-top: 10px;
+   padding-left: 40px;
+   padding-right: 40px;
+
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+
+   -webkit-box-shadow: rgba(0,0,0,0.5) 8px 8px 16px;
+   -moz-box-shadow: rgba(0,0,0,0.5) 8px 8px 16px;
+   -o-box-shadow: rgba(0,0,0,0.5) 8px 8px 16px;
+   box-shadow: rgba(0,0,0,0.5) 8px 8px 16px;
+
+   border-radius: 10px;
+
+   opacity: 0;
+   display: none;
+   z-index: 1;
+}
+
+#RabbitRun-credits a:hover {
+   color: blue;
+   text-shadow: 1px 1px 1px rgba(0,0,200,0.5);
+}
+
+#RabbitRun-credits p {
+   margin-top: 20px;
+   margin-bottom: 10px;
+   font: 24px fantasy;
+   text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+   color: blue;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.6);
+}
+
+#RabbitRun-credits .attribution {
+   font: 18px fantasy;
+   color: blue;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.6);
+}
+
+#RabbitRun-credits .title {
+   margin-bottom: 10px;
+   font-size: 22px;
+   color: blue;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.6);
+}
+
+#RabbitRun-new-game-link {
+  margin-top: 10px;
+  float: right;
+  margin-right: 20px;
+  font-size: 0.9em;
+}
+
+#RabbitRun-art-title {
+   margin-top: 20px;
+}
+
+#RabbitRun-sound-and-music-title {
+   margin-top: 20px;
+}
+
+#RabbitRun-credits .RabbitRun-heading {
+   margin-bottom: 10px;
+   font-size: 35px;
+   font-family: fantasy;
+   color: blue;
+   text-shadow: 2px 2px 2px rgba(255,255,255,0.8);
+}
+
+.RabbitRun-tweet-link {
+  margin-top: 10px;
+  margin-left: 20px;
+  float: left;
+  font-size: 0.9em;
+}
+
+#RabbitRun-play-again-link {
+  margin-top: 10px;
+  float: right;
+  margin-right: 20px;
+  font-size: 0.9em;
+}
+
+#RabbitRun-running-slowly {
+   position: absolute;
+   margin-left: 82px;
+   margin-top: 75px;
+   width: 600px;
+   background: rgba(255,255,255,0.85);
+   padding: 0px 20px 20px 20px;
+   color: navy;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+
+   -webkit-transition: opacity 1s;
+   -moz-transition: opacity 1s;
+   -o-transition: opacity 1s;
+   transition: opacity 1s;
+
+   border-radius: 10px 10px 10px;
+
+   -webkit-box-shadow: rgba(0,0,0,0.5) 4px 4px 8px;
+   -moz-box-shadow: rgba(0,0,0,0.5) 4px 4px 8px;
+   -o-box-shadow: rgba(0,0,0,0.5) 4px 4px 8px;
+   box-shadow: rgba(0,0,0,0.5) 4px 4px 8px;
+
+   opacity: 0;
+   display: none;
+
+   z-index: 1;
+}
+
+#RabbitRun-running-slowly h1 {
+   padding-top: 0;
+   text-align: center;
+   color: rgb(50,50,250);
+}
+
+#RabbitRun-slowly-okay:hover {
+   color: blue;
+}
+
+#RabbitRun-slowly-dont-show:hover {
+   color: blue;
+}
+
+#RabbitRun-slowly-okay {
+   margin-top: 20px;
+   float: left;
+   margin-left: 50px;
+   font-size: 1.2em;
+}
+
+#RabbitRun-slowly-dont-show {
+   margin-top: 20px;
+   float: right;
+   margin-right: 50px;
+   font-size: 1.2em;
+}
+
+#RabbitRun-running-slowly p {
+   color: navy;
+   font-size: 1.05em;
+}
+
+#RabbitRun-developer-backdoor {
+   color: navy;
+   position: absolute;
+   margin: 0 auto;
+   margin-top: 72px;
+   margin-left: 1px;
+   width: 800px;
+   height: 90px;
+   border: thin solid brickred;
+   border-bottom: thin solid blue;
+   background: rgba(255, 255, 200, 0.7);
+
+   -webkit-transition: opacity 1s;
+   -moz-transition: opacity 1s;
+   -o-transition: opacity 1s;
+   transition: opacity 1s;
+
+   display: none;
+   opacity: 0;
+   z-index: 1;
+}
+
+.RabbitRun-group {
+   position: absolute;
+   text-align: center;
+}
+
+#RabbitRun-collision-rectangles {
+   margin-left: 530px;
+   margin-top: 0.5em;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+}
+
+#RabbitRun-detect-running-slowly {
+   margin-left: 530px;
+   margin-top:  2.0em;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+}
+
+#RabbitRun-smoking-holes {
+   margin-left: 530px;
+   margin-top: 3.5em;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+}
+
+.RabbitRun-readout {
+   position: relative;
+   margin 0 auto;
+   width: 3em;
+   height: 1.5em;
+   text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+   color: navy;
+}
+
+#RabbitRun-running-slowly-threshold {
+   margin-left: 30px;
+   margin-top: 10px;
+   width: 250px;
+   height: 50px;
+}
+
+#RabbitRun-running-slowly-slider {
+   margin-left: 20px;
+   width: 200px;
+   height: 30px;
+}
+
+#RabbitRun-time-rate {
+   margin-left: 245px;
+   margin-top: 10px;
+   width: 250px;
+   height: 50px;
+}
+
+#RabbitRun-time-rate-slider {
+   margin-left: 20px;
+   width: 200px;
+   height: 30px;
+}
+
+#RabbitRun-ruler-canvas {
+   position: absolute;
+   margin-top: -22px;
+   border-top: thin solid rgba(255,255,0,0.5);
+   border: thin solid rgba(0,0,255,0.5);
+   background: rgba(255, 255, 200, 0.7);
+
+   -webkit-transition: opacity 1s;
+   -moz-transition: opacity 1s;
+   -o-transition: opacity 1s;
+   transition: opacity 1s;
+
+   opacity: 0;
+   display: none;
+   z-index: 1;
+}
+
+#RabbitRun-high-score-toast {
+   position: absolute;
+   padding: 5px;
+   margin-left: 135px;
+   margin-top: 32px;
+   color: yellow;
+   font: 20px fantasy;
+   text-shadow: 1px 1px 1px black;
+   text-align: center;
+   width: 520px;
+   height: 390px;
+   z-index: 1;
+
+   opacity: 0;
+   display: none;
+
+   -webkit-transition: opacity 1s;
+   -moz-transition: opacity 1s;
+   -o-transition: opacity 1s;
+   transition: opacity 1s;
+}
+
+
+#RabbitRun-high-score-toast p {
+   color: yellow;
+}
+
+#RabbitRun-high-score-toast .RabbitRun-title {
+   font-size: 45px;
+   text-shadow: 2px 2px 2px black;
+   margin-bottom: 10px;
+}
+
+#RabbitRun-previous-high-scores-title {
+   font-size: 25px;
+}
+
+#RabbitRun-previous-high-scores {
+   text-align: left;
+   margin: 0 auto;
+   padding-left: 130px;
+}
+
+#RabbitRun-left-control {
+   display: none;
+}
+
+#RabbitRun-right-control {
+   display: none;
+}
+
+#RabbitRun-ipad-instructions {
+   display: none;
+}
+
+.RabbitRun-instruction-explanation {
+   color: royalblue;
+   margin-left: 10px;
+}
+
+.RabbitRun-instruction-keys {
+   color: royalblue;
+   margin-left: 10px;
+}
+
+.RabbitRun-mobile-toast {
+   position: absolute;
+   border-radius: 10px;
+
+   font: 30px fantasy;
+   text-align: center;
+   text-shadow: 1px 1px 1px rgb(0,0,0);
+
+   color: yellow;
+
+   -webkit-transition: opacity 1s;
+   -moz-transition: opacity 1s;
+   -o-transition: opacity 1s;
+   transition: opacity 1s;
+
+   display: none;
+   z-index: 1;
+   opacity: 0;
+}
+
+#RabbitRun-mobile-start-toast {
+   width: 800px;
+   height: 400px;
+}
+
+#RabbitRun-mobile-welcome-toast {
+   width: 800px;
+   height: 400px;
+}
+
+.RabbitRun-welcome-link {
+   font: 40px fantasy;
+   color: gold;
+   text-shadow: 2px 2px 2px blue;
+}
+
+.RabbitRun-welcome-link:hover {
+   color: yellow;
+}
+
+#RabbitRun-welcome {
+   text-align: center;
+   padding: 25px;
+   margin-bottom: 30px;
+   font: 36px fantasy;
+   text-shadow: 1px 1px 1px black;
+}
+
+#RabbitRun-welcome-instructions {
+   font: 18px fantasy;
+   text-shadow: 1px 1px 1px black;
+   color: white;
+}
+
+#RabbitRun-mobile-instructions {
+   margin-left: 155px;
+   padding-left: 5px;
+   padding-top: 10px;
+   height: 2em;
+
+   color: #ff0;
+   font-size: 0.95em;
+
+   -webkit-transition: opacity 5s;
+   -moz-transition: opacity 5s;
+   -o-transition: opacity 5s;
+   transition: opacity 5s;
+
+   display: none;
+   opacity: 0;
+}

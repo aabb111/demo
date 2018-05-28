@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+   <!-- Head.........................................................-->
+
+	<head>
+	   <title>Snail Bait</title>
+      <meta name="viewport" content="width=900"/>
+
+     <meta name='apple-mobile-web-app-capable' content='yes'>
+     <meta name='apple-mobile-web-app-status-bar-style'
+            content='black-translucent'>
+
+     <link rel='stylesheet' href='../RabbitRun.css'>
+     <link rel="icon" href="../favicon.ico">
+   </head>
+
+   <!-- Body.........................................................-->
+
+   <body>
+      <!-- Music.....................................................-->
+
+      <audio id='RabbitRun-music' preload='auto'>
+        <source src='../sounds/music.ogg' type='audio/ogg'>
+        <source src='../sounds/music.mp3' type='audio/mp3'>
+      </audio>
+
+      <!-- Sound effects..............................................-->
+
+      <audio id='RabbitRun-audio-sprites' preload='auto'>
+        <source src='../sounds/audio-sprites.ogg' type='audio/ogg'>
+        <source src='../sounds/audio-sprites.mp3' type='audio/mp3'>
+      </audio>
+
+      <!-- Arena.....................................................-->
+
+      <div id='RabbitRun-arena'>
+         <!-- Developer backdoor....................................-->
+
+         <div id='RabbitRun-developer-backdoor'>
+            <div class='RabbitRun-group'
+                 id='RabbitRun-running-slowly-threshold'>
+               <span class='RabbitRun-prompt'
+                     id='RabbitRun-running-slowly-prompt'>
+                  Running slowly threshold
+               </span>
+
+               <div id='RabbitRun-running-slowly-slider'></div>
+
+               <span class='RabbitRun-readout'
+                     id='RabbitRun-running-slowly-readout'>40</span>&nbsp;fps
+            </div>
+
+            <div class='RabbitRun-group' id='RabbitRun-time-rate'>
+               <span class='RabbitRun-prompt'
+                     id='RabbitRun-time-rate-prompt'>
+                  Time rate</span>
+
+               <div id='RabbitRun-time-rate-slider'></div>
+
+               <span class='RabbitRun-readout'
+                     id='RabbitRun-time-rate-readout'>100</span>%
+            </div>
+
+            <div class='RabbitRun-group'
+                 id='RabbitRun-collision-rectangles'>
+               <input type='checkbox'
+                      id='RabbitRun-collision-rectangles-checkbox'/>
+               Draw collision rectangles
+            </div>
+
+            <div class='RabbitRun-group'
+                 id='RabbitRun-detect-running-slowly'>
+               <input type='checkbox'
+                      id='RabbitRun-detect-running-slowly-checkbox' checked/>
+               Warn when running slowly
+            </div>
+
+            <div class='RabbitRun-group'
+                 id='RabbitRun-smoking-holes'>
+               <input type='checkbox'
+                      id='RabbitRun-smoking-holes-checkbox' checked/>
+               Smoke
+            </div>
+         </div>
+
+         <!-- Credits...............................................-->
+
+         <div id='RabbitRun-credits' class='RabbitRun-credits'>
+            <div class='RabbitRun-heading'>Credits</div>
+
+            <hr></hr>
+
+            <div class='RabbitRun-credit'>
+               <div id='RabbitRun-art-title'
+                    class='RabbitRun-title'>~ Art ~</div>
+
+               <div class='RabbitRun-attribution'><b>
+                  <a href='http://lea.verou.me/css3patterns'>
+                     CSS3 Patterns Gallery
+                  </a>:
+
+                  </b> Background pattern in CSS by Anna Kassner
+               </div>
+
+               <div class='RabbitRun-attribution'><b>
+                  <a href='http://bit.ly/kNzDVc'>
+                     Replica Island
+                  </a>:
+
+                  </b> All graphics except the runner and coins
+               </div>
+
+               <div class='RabbitRun-attribution'>
+                  <b>MJKRZAK People's Sprites:</b>
+                  Runner spritesheet (Link no longer available)
+               </div>
+
+               <div class='RabbitRun-attribution'><b>
+                  <a href='http://lovershorizon.deviantart.com/art/RPG-Coins-Set-281501013'>LoversHorizon at deviantART</a>:
+                  </b> Coins
+               </div>
+            </div>
+
+            <div class='RabbitRun-credit'>
+               <div id='RabbitRun-sound-and-music-title' class='RabbitRun-title'>~ Sound and Music ~</div>
+
+               <div class='RabbitRun-attribution'>
+                  <a href='http://bit.ly/LFtwr8'>
+                     Pete Marquardt:
+                  </a>
+
+                  Soundtrack from soundclick.com
+               </div>
+
+               <div class='RabbitRun-attribution'>
+                  <a href='http://bit.ly/kNzDVc'>
+                     Replica Island:
+                  </a>
+
+                  Sound effects
+               </div>
+            </div> <!-- end of credit -->
+
+            <p>
+               <a id='RabbitRun-tweet'
+                  hashtags="#html5" target="_blank"
+                  class='RabbitRun-tweet-link'>
+                  Tweet my score</a>
+
+               <a id='RabbitRun-play-again-link' href='#'>Play again</a>
+            </p>
+
+         </div> <!-- end of credits -->
+
+         <!-- Running slowly........................................-->
+
+         <div id='RabbitRun-running-slowly'>
+
+            <h1>Snail Bait is running slowly</h1>
+
+            <hr>
+
+            <p id='RabbitRun-slowly-warning'></p>
+
+            <p>A wide range of applications, from video players to
+              backup software, can slow this game down. For best results, hide all other windows on your desktop and close graphics intensive apps when you play HTML5 games.
+            </p>
+
+            <p>You should also upgrade your browser to the latest version to make sure that it has hardware accelerated HTML5 Canvas. Any version of Chrome starting with version 18, for example, has hardware accelerated
+               Canvas. Here is a link to the
+               <a href='http://www.google.com/chrome/'>latest version of Chrome</a>.
+            </p>
+
+            <a id='RabbitRun-slowly-okay' href='#'>
+               Okay
+            </a>
+
+            <a  id='RabbitRun-slowly-dont-show' href='#'>
+               Do not show this warning again
+            </a>
+         </div>
+
+         <!-- Lives indicator........................................-->
+
+         <div id='RabbitRun-lives'>
+            <img id='RabbitRun-life-icon-left'
+                 src='../images/runner-small.png'/>
+
+            <img id='RabbitRun-life-icon-middle'
+                 src='../images/runner-small.png'/>
+
+            <img id='RabbitRun-life-icon-right'
+                 src='../images/runner-small.png'/>
+         </div>
+
+         <!-- Score .................................................-->
+
+         <div id='RabbitRun-score'>0</div>
+         <div id='RabbitRun-fps'></div>
+
+         <!-- Toast..................................................-->
+
+         <div id='RabbitRun-toast'></div>
+
+         <div id='RabbitRun-mobile-welcome-toast'
+              class='RabbitRun-mobile-toast'> <!-- mobile devices only -->
+            <div id='RabbitRun-welcome'>
+               Capture coins and jewels. Avoid bees and bats.
+
+               <div id='RabbitRun-welcome-instructions'>
+                  <p><a href='#' class='RabbitRun-welcome-link'
+                                    id='RabbitRun-welcome-start-link'>
+                        Start the game
+                     </a>
+                  </p>
+
+                  <p><a href='#' class='RabbitRun-welcome-link'
+                                    id='RabbitRun-show-how-link'>
+                        Show how to use the controls
+                     </a>
+                  </p>
+               </div>
+            </div>
+         </div>
+
+         <div id='RabbitRun-mobile-start-toast'
+              class='RabbitRun-mobile-toast'> <!-- mobile devices only -->
+               <a href='#' class='RabbitRun-welcome-link'
+                                 id='RabbitRun-mobile-start-link'>Start</a>
+         </div>
+
+         <!-- Loading screen........................................-->
+
+         <div id='RabbitRun-loading'>
+            <div id='RabbitRun-loading-title'>Loading...</div>
+            <img id='RabbitRun-loading-animated-gif'/> <!-- no src attribute -->
+         </div>
+
+         <!-- The game canvas........................................-->
+
+         <canvas id='RabbitRun-game-canvas' width='800' height='400'>
+            Your browser does not support HTML5 Canvas.
+         </canvas>
+
+         <!-- The ruler canvas for the developer backdoor.........-->
+
+         <canvas id='RabbitRun-ruler-canvas'
+                 width='800' height='20'>
+            Your browser does not support HTML5 Canvas.
+         </canvas>
+
+         <!-- Sound and music.....................................-->
+
+         <div id='RabbitRun-sound-and-music'>
+            <div id='RabbitRun-sound-checkbox-div' class='RabbitRun-checkbox-div'>
+               Sound <input id='RabbitRun-sound-checkbox'
+                            type='checkbox' checked />
+            </div>
+
+            <div class='RabbitRun-checkbox-div'>
+               Music <input id='RabbitRun-music-checkbox'
+                            type='checkbox' checked G/>
+            </div>
+         </div>
+
+         <!-- Instructions........................................-->
+
+         <div id='RabbitRun-instructions'>
+            <div class='RabbitRun-keys'>
+               &larr; / d
+               <div class='RabbitRun-explanation'>move left</div>
+               &rarr; / k
+               <div class='RabbitRun-explanation'>move right</div>
+            </div>
+
+            <div class='RabbitRun-keys'>
+               j <div class='RabbitRun-explanation'>jump</div>
+            </div>
+
+            <div class='RabbitRun-keys'>
+               p <div class='RabbitRun-explanation'>pause</div>
+            </div>
+         </div>
+
+         <div id='RabbitRun-mobile-instructions'>
+            <div class='RabbitRun-keys'>
+               Left
+               <div class='RabbitRun-explanation'>Run left or jump</div>
+            </div>
+
+            <div class='RabbitRun-keys'>
+               Right
+               <div class='RabbitRun-explanation'>Run right or jump</div>
+            </div>
+
+            <div class='RabbitRun-keys'>
+               p
+               <div class='RabbitRun-explanation'>pause</div>
+            </div>
+         </div>
+
+         <!-- Copyright...........................................-->
+
+         <div id='RabbitRun-copyright'></div>
+      </div>
+
+      <!-- JavaScript................................................-->
+
+      <script src='../js/requestNextAnimationFrame.js'></script>
+      <script src='../js/sprites.js'></script>
+      <script src='../js/behaviors/cellSwitch.js'></script>
+      <script src='../js/behaviors/bounce.js'></script>
+      <script src='../js/behaviors/cycle.js'></script>
+      <script src='../js/behaviors/pulse.js'></script>
+      <script src='../js/stopwatch.js'></script>
+      <script src='../js/animationTimer.js'></script>
+      <script src='../js/timeSystem.js'></script>
+      <script src='../js/smokingHole.js'></script>
+      <script src='../js/slider.js'></script>
+      <script src='RabbitRun.js'></script>
+  </body>
+</html>
